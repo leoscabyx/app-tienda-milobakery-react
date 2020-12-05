@@ -1,13 +1,21 @@
+import Navbar from './components/general/Navbar';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Tienda Coder</h1>
-        <span>Curso de ReactJS</span>
+    
+      <header className="app-header">
+        <Navbar/>
+        <div className="app-header__info">
+
+            <h1>Milobakery</h1>
+            <span>Cinnamon Rolls & Bakery</span>
+          
+          {/* Colocar imagen de roles de canela */}
+        </div>
+        
       </header>
-    </div>
+
   );
 }
 
