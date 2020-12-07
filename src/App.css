@@ -1,13 +1,2 @@
-.app-header {
-  min-height: 100vh;
-}
 
-.app-header__info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 0;
-  text-align: center;
-}
 

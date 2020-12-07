@@ -20,12 +20,14 @@
 }
 
 .navbar__item {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0;
     position: relative;
+    
 }
 
 .navbar__enlace {
     color: var(--color-white);
+    padding: 0 1rem;
 }
 
 .navbar__item::before {

@@ -1,0 +1,30 @@
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem 0;
+    max-width: 998px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.info-container div:nth-child(2)  {
+    padding: 0 1rem;
+    max-width: 400px;
+
+}
+
+.info-container__img {
+    width: 100%;
+    height: 100%;
+
+}
+
+@media screen and (min-width: 568px) {
+    .info-container {
+        flex-direction: row;
+    }
+
+
+}

@@ -1,21 +1,20 @@
-import Navbar from './components/general/Navbar';
+import Header from './components/general/Header/Header';
+import Main from './components/general/Main/Main';
+import ItemListContainer from './components/ItemListContainer';
 import './App.css';
 
 function App() {
   return (
-    
-      <header className="app-header">
-        <Navbar/>
-        <div className="app-header__info">
+    <>
+      <Header/>
 
-            <h1>Milobakery</h1>
-            <span>Cinnamon Rolls & Bakery</span>
-          
-          {/* Colocar imagen de roles de canela */}
-        </div>
-        
-      </header>
-
+      <Main> {/* Contenido Pricipal */}
+        <ItemListContainer greeting="Componente ItemListContainer" />
+        {/* Futuras Secciones: Preguntas Frecuentas, Contacto, About Us, Banner o Card Informativo (Envio, Metodos Pago, Etc) */}
+      </Main>
+      
+      {/* No he definido informacion aun en el Footer: Redes Sociales, titulo, direccion */}
+    </>
   );
 }
 
