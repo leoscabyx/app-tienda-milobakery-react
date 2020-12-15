@@ -1,4 +1,4 @@
-import CartWidget from '../../CartWidget';
+import CartWidget from '../../CartWidget/CartWidget';
 import logo from '../../../assets/milo-logo.png';
 import './NavBar.css';
 
