@@ -31,6 +31,7 @@ a {
 
 h1 {
   font-family: var(--fuente-titulo);
+  font-size: 48px;
 }
 
 /* Input estilos internos Flechas Up y Down */
@@ -42,5 +43,40 @@ input[type="number"]::-webkit-inner-spin-button {
 /* //Firefox: */
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+/* Contenedor Fluido y no Fluido */
+
+.container, .container-fluid {
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 998px;
+  margin: 0 auto;
+}
+
+.container-fluid {
+  width: 100%;
+}
+
+/* titulo de seccions h2 */
+
+.titulo-seccion {
+  font-size: 30px;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.titulo-seccion::before {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  width: 30%;
+  height: 3px;
+  max-width: 200px;
+  background-color: var(--bg-primario);
 }
 

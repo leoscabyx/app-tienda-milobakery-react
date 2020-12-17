@@ -5,7 +5,8 @@
     align-items: center;
     padding: 2rem 0;
     max-width: 998px;
-    height: 500px;
+    height: calc(100% - 74px);
+    max-height: 800px;
     margin: 0 auto;
 }
 

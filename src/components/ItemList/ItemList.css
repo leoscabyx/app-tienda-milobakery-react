@@ -1,0 +1,9 @@
+.itemList {
+    
+    min-height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+
+}
