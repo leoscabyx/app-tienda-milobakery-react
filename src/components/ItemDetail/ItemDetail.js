@@ -2,7 +2,7 @@
 
 function ItemDetail({data}) {
     const {title, description, price, pictureUrl} = data
-    console.log(data)
+    console.log(typeof data)
     return (
       <div className="itemDetail">
 

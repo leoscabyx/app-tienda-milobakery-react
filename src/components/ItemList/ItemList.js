@@ -13,6 +13,7 @@ function ItemList({items}) {
 
                                         <Item
                                             key={item.id}
+                                            id={item.id}
                                             title={item.title} 
                                             price={item.price}
                                             pictureUrl={item.pictureUrl}
