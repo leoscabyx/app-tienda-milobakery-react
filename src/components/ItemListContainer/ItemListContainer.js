@@ -66,11 +66,11 @@ function ItemListContainer() {
            if (typeof category_name !== 'undefined') {
                       
               const itemFiltadros = productos.filter((item) => {
-                console.log(item.category)
-                console.log(category_name)
+                /* console.log(item.category) */
+                /* console.log(category_name) */
                 return item.category == category_name
           });
-            console.log(itemFiltadros)
+            /* console.log(itemFiltadros) */
             resolve(itemFiltadros);
           }else{
             resolve(productos);

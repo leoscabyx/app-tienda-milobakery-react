@@ -4,6 +4,7 @@ import Header from './components/general/Header/Header';
 import Main from './components/general/Main/Main';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import ItemCartContainer from './components/ItemCartContainer/ItemCartContainer';
 
 import './App.css';
 
@@ -25,6 +26,11 @@ function App() {
 
           <Route exact path="/detail/:id">
             <ItemDetailContainer />
+
+          </Route>
+
+          <Route exact path="/cart">
+            <ItemCartContainer />
 
           </Route>
 

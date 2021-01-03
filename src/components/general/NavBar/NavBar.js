@@ -34,7 +34,7 @@ function NavBar() {
 
                 <li className="navbar__item"><a className="navbar__enlace" href="#">Sobre Nosotros</a></li>
                 <li className="navbar__item"><a className="navbar__enlace" href="#">Contacto</a></li>
-                <li className="navbar__item"><a className="navbar__enlace" href="#"><CartWidget/></a></li>
+                <li className="navbar__item"><Link  className="navbar__enlace" to="/cart"><CartWidget/></Link></li>
             </ul>
         </nav>
   );
