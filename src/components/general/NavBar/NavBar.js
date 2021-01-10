@@ -1,6 +1,10 @@
-import CartWidget from '../../CartWidget/CartWidget';
-import NavItem from '../NavItem/NavItem';
+import { useState } from 'react';
 import { Link } from "react-router-dom";
+
+import CardIcon from '../../CardIcon/CardIcon';
+import NavItem from '../NavItem/NavItem';
+import WidgetCart from '../../WidgetCart/WidgetCart';
+
 
 import logo from '../../../assets/milo-logo.png';
 import './NavBar.css';
@@ -21,8 +25,16 @@ function NavBar() {
       texto: 'Pan de Jamon',
       ruta: '/category/pan-de-jamon'
     }
-  ]
+  ];
+
+  const [showWidgetCart, setShowWidgetCart] = useState(false);
+
+  const openWidgetCart = () => {
+      setShowWidgetCart(!showWidgetCart);
+  }
+
   return (
+        <>
         <nav className="navbar">
             <Link to="/"><img className="navbar__logo" src={logo} alt=""/></Link>
             <ul className="navbar__menu">
@@ -34,9 +46,13 @@ function NavBar() {
 
                 <li className="navbar__item"><a className="navbar__enlace" href="#">Sobre Nosotros</a></li>
                 <li className="navbar__item"><a className="navbar__enlace" href="#">Contacto</a></li>
-                <li className="navbar__item"><Link  className="navbar__enlace" to="/cart"><CartWidget/></Link></li>
+                {/* <li className="navbar__item"><Link  className="navbar__enlace" to="/cart"></Link></li> */}
             </ul>
+
+            <CardIcon action={openWidgetCart} />
         </nav>
+        <WidgetCart show={showWidgetCart} action={openWidgetCart} />
+        </>
   );
 }
 

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Header from './components/general/Header/Header';
@@ -6,10 +7,18 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemCartContainer from './components/ItemCartContainer/ItemCartContainer';
 
+import { CardContext } from './context/CartContext';
+
 import './App.css';
 
 function App() {
+  const [data, setData] = useState({
+    items: [],
+    cantidad: 0
+  })
+
   return (
+    <CardContext.Provider value={[data, setData]}>
     <BrowserRouter>
       <Header/>
 
@@ -43,6 +52,7 @@ function App() {
 
       {/* No he definido informacion aun en el Footer: Redes Sociales, titulo, direccion */}
     </BrowserRouter>
+    </CardContext.Provider>
   );
 }
 

@@ -1,4 +1,62 @@
 .ItemCartContainer {
-    text-align: center;
-    color: green;
+    padding: 1.5rem 1rem;
+    max-width: 998px;
+    margin: 0 auto;
+
 }
+
+.ItemCartContainer h2 {
+    padding: 1.5rem 0;
+    color: salmon;
+    position: relative;
+}
+
+.ItemCartContainer h2::before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    height: 3px;
+    max-width: 200px;
+    background-color: salmon;
+}
+
+.ItemCartContainer h3 {
+    text-align: right;
+}
+
+.ItemCartFooter {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem 0;
+}
+
+
+.ItemCartFooter button {
+    border: 2px solid var(--bg-secundario);
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    color: #555;
+}
+
+.CartEmpty {
+    padding: 1rem 0;
+}
+
+.CartEmpty h4 {
+    text-align: center;
+    color: slateblue;
+    font-size: 24px;
+}
+
+.CartEmpty div {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.CartEmpty img {
+    width: 100%;
+    height: 100%;
+}
+

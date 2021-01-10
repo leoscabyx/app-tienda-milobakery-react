@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ItemCount from '../ItemCount/ItemCount';
+/* import ItemCount from '../ItemCount/ItemCount'; */
 
 import './Item.css'
 
@@ -14,9 +14,9 @@ function Item({id, stock, title, description, price, pictureUrl}) {
             <span>{price}</span>
             <p>{description}</p>
           </div>
-          <div className="item_footer">
+          {/* <div className="item_footer">
             <ItemCount stock={stock} initial={1}/>
-          </div>
+          </div> */}
           <Link to={`/detail/${id}`}>Ver más</Link>
       </div>
     );

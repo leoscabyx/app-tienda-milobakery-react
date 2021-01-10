@@ -1,0 +1,129 @@
+.widgetCart {
+    height: 100vh;
+    width: 80%;
+    position: fixed;
+    
+    top: 0;
+    background: var(--color-white);
+    z-index: 2;
+    box-shadow: -0.3rem 0 0.3rem rgba(0, 0, 0, 0.2);
+    transition: right 0.5s;
+
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+    .widgetCart {
+        width: 30vw;
+    }
+    .close {
+        right: -30vw;
+    }
+}
+  
+.close {
+    right: -80%;
+}
+
+.open {
+    right: 0;
+}
+
+.widgetCart h2 {
+    padding: 1.5rem 1rem;
+    color: salmon;
+    position: relative;
+}
+
+.widgetCart h2::before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 1rem;
+    width: 30%;
+    height: 3px;
+    max-width: 200px;
+    background-color: salmon;
+}
+
+.widgetCart__body {
+    padding: 1rem 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.widgetCart__footer {
+    padding: 1.5rem 1rem;
+}
+
+.widgetCartItem {
+    padding: .5rem 1rem;    
+}
+
+.widgetCartItem__info {
+    display: flex;
+    align-items: center;
+
+}
+
+.widgetCartItem__title {
+    flex: 1;
+    padding: 0 1rem;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.widgetCartItem__img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.widgetCartItem__qty {
+    padding: 0 1rem;
+}
+
+.widgetCartItem__eliminar {
+    border: var(--bg-primario);
+    outline: none;
+    width: 30px;
+    height: 30px;
+    background-color: var(--bg-secundario);
+    cursor: pointer;
+}
+
+.widgetCartItem__cart {
+    /* background-color: var(--color-white); */
+    border: 2px solid var(--bg-secundario);
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    color: #555;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    transition: all 0.5s;
+    text-align: center;
+    margin-bottom: 1rem;
+    
+}
+
+.widgetCartItem__cart:hover {
+    background-color: var(--bg-secundario);
+    color: var(--color-white);
+}
+
+.widgetCart__footer div {
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+.widgetCart__footer button {
+    border: 2px solid var(--bg-secundario);
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    color: #555;
+}

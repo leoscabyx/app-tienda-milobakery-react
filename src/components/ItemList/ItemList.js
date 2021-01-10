@@ -8,21 +8,21 @@ function ItemList({items}) {
     return (
       <div className="itemList">
 
-                            {
-                                items.map((item) => (
+            {
+                items.map((item) => (
 
-                                        <Item
-                                            key={item.id}
-                                            id={item.id}
-                                            title={item.title} 
-                                            price={item.price}
-                                            pictureUrl={item.pictureUrl}
-                                            description={item.description}
-                                            stock={item.stock}
-                                        />
+                        <Item
+                            key={item.id}
+                            id={item.id}
+                            title={item.title} 
+                            price={item.price}
+                            pictureUrl={item.pictureUrl}
+                            description={item.description}
+                            stock={item.stock}
+                        />
 
-                                ))
-                            }
+                ))
+            }
 
       </div>
     );
