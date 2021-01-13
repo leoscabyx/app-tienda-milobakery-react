@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { CardContext } from "../../context/CartContext";
 
@@ -71,6 +72,7 @@ function ItemCartContainer() {
                     <div>
                         <img src={imgCart} alt="Carrito Vacio"/>
                     </div>
+                    <Link to="/">Ir a Productos Destacados</Link>    
                 </div>
             }
 

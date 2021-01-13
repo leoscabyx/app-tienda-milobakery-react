@@ -53,6 +53,7 @@
 .CartEmpty div {
     max-width: 50%;
     margin: 0 auto;
+    margin-bottom: 1rem;
 }
 
 .CartEmpty img {
@@ -60,3 +61,12 @@
     height: 100%;
 }
 
+.CartEmpty a {
+    border: 2px solid var(--bg-secundario);
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #555;
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+}
