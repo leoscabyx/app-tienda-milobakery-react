@@ -14,11 +14,11 @@ function ItemList({items}) {
                         <Item
                             key={item.id}
                             id={item.id}
-                            title={item.title} 
-                            price={item.price}
-                            pictureUrl={item.pictureUrl}
-                            description={item.description}
-                            stock={item.stock}
+                            title={item.data.title} 
+                            price={item.data.price}
+                            pictureUrl={item.data.pictureUrl}
+                            description={item.data.description}
+                            stock={item.data.stock}
                         />
 
                 ))

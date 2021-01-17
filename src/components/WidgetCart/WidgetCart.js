@@ -43,7 +43,7 @@ const WidgetCart = ({show, action}) => {
                     <div className="widgetCartItem">
                         
                         <div className="widgetCartItem__info">
-                            <img className="widgetCartItem__img" src={item.pictureUrl} alt="imagen"/>
+                            <img className="widgetCartItem__img" src={`/productos/${item.pictureUrl}`} alt="imagen"/>
                             <h4 className="widgetCartItem__title">{item.title}</h4>
                             <span className="widgetCartItem__qty">{item.qty}</span>
                             <button className="widgetCartItem__eliminar" onClick={() => removeItem(item.id)}>X</button>

@@ -1,0 +1,30 @@
+.checkout {
+    padding: 1rem 0;
+}
+
+.checkout form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.checkout h2 {
+    margin-bottom: 1rem;
+}
+
+.checkout .checkout__input {
+    flex: 1 1 calc(50% - 16px);
+    
+    border: 1px solid var(--bg-secundario);
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    
+}
+
+.checkout button {
+    border: 2px solid var(--bg-secundario);
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    color: #555;
+
+}

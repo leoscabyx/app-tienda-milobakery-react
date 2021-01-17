@@ -2,7 +2,8 @@ import {useState, useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import ItemDetail from '../ItemDetail/ItemDetail';
 
-import { productos } from "../../products";
+// import { productos } from "../../products";
+import { getFirestore } from "../../db";
 
 function ItemDetailContainer() {
 
@@ -10,23 +11,18 @@ function ItemDetailContainer() {
 
     const [item, setItem] = useState({});
 
+    const db = getFirestore();
 
-    const getItem = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const [producto] = productos.filter((item) => item.id == id);
-            /* console.log(producto) */
-            resolve(producto);
-            
-        }, 1000)
-    })
+
 
     useEffect(() => {
-        
-        getItem.then(rta => {
-            /* console.log(rta) */
-            setItem({...rta}) 
-            /* console.table(item)  */
-        });
+        db.collection('productos').doc(id).get()
+        .then(doc => {
+            if (doc.exists) {
+                setItem(doc.data())
+            }
+        })
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -36,7 +32,7 @@ function ItemDetailContainer() {
         {
             Object.keys(item).length !== 0 ?
             <>
-                <h2 className="titulo-seccion">Detalle del Producto N° - {id}</h2>
+                <h2 className="titulo-seccion">Detalle del Producto N° - {item.id}</h2>
                 <ItemDetail item={item}/>
             </> :
                 <p className="cargando">Cargando items...</p>

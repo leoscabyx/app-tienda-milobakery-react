@@ -3,9 +3,11 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Header from './components/general/Header/Header';
 import Main from './components/general/Main/Main';
+import Footer from './components/general/Footer/Footer';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemCartContainer from './components/ItemCartContainer/ItemCartContainer';
+import ItemCheckout from './components/ItemCheckout/ItemCheckout';
 
 import { CardContext } from './context/CartContext';
 
@@ -43,6 +45,11 @@ function App() {
 
           </Route>
 
+          <Route exact path="/checkout">
+            <ItemCheckout />
+
+          </Route>
+
           <Route path="*">
             <h3 className="error404">Recurso NO disponible...</h3> {/* Luego creare el componente Error404 y lo estilizo mejor xD */}
           </Route>
@@ -51,6 +58,7 @@ function App() {
       </Main>
 
       {/* No he definido informacion aun en el Footer: Redes Sociales, titulo, direccion */}
+      <Footer />
     </BrowserRouter>
     </CardContext.Provider>
   );

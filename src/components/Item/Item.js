@@ -7,7 +7,7 @@ function Item({id, stock, title, description, price, pictureUrl}) {
     return (
       <div className="item">
           <div className="item__header">
-            <img src={pictureUrl} alt=""/>
+            <img src={`/productos/${pictureUrl}`} alt={title}/>
           </div>
           <div className="item__body">
             <h3>{title}</h3>

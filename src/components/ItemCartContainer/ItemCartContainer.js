@@ -21,30 +21,34 @@ function ItemCartContainer() {
     }
 
     const removeItem = (itemDelete) => {
-        console.log(itemDelete)
+        /* console.log(itemDelete) */
         const itemEliminar = data.items.find(producto => producto.id === itemDelete);
         const datosFiltadros = data.items.filter((producto) => producto.id !== itemDelete)
-
+        console.log(itemEliminar.qty)
+        
 
         setData({
             ...data,
             cantidad: data.cantidad - itemEliminar.qty,
             items: [...datosFiltadros]
         })
+
     }
 
     const calcularTotal = () => {
-        if (data.items.length === 0) return null
+        console.log(data, montoTotal)
+        if (data.items.length === 0) return 0
         const array = data.items.map(item => item.qty * item.price )
 
+       
         let resultado = array.reduce((acu, currentvalue) => acu + currentvalue)
-        setMontoTotal(resultado) 
-        
+        setMontoTotal(resultado)
     }
 
     useEffect(() => {
         calcularTotal()
-    }, [montoTotal])
+        
+    }, [data, montoTotal])
     
     return (
         <div className="ItemCartContainer">
@@ -57,7 +61,7 @@ function ItemCartContainer() {
                     <div className="widgetCartItem">
                         
                         <div className="widgetCartItem__info">
-                            <img className="widgetCartItem__img" src={item.pictureUrl} alt="imagen"/>
+                            <img className="widgetCartItem__img" src={`/productos/${item.pictureUrl}`} alt="imagen"/>
                             <h4 className="widgetCartItem__title">{item.title} - {item.description}</h4>
                             <span className="widgetCartItem__qty">{item.qty} x {item.price}  $</span>
                             <button className="widgetCartItem__eliminar" onClick={() => removeItem(item.id)}>X</button>
@@ -81,7 +85,7 @@ function ItemCartContainer() {
                 <h3>Monto Total:  {montoTotal}</h3>
                 <div className="ItemCartFooter">
                     <button className="" onClick={() => clearCart()}>Vaciar Carrito</button>
-                    <button>Procesar Compra</button>
+                    <Link to="/checkout">Procesar Compra</Link>
                 </div>
                 </>
             )}

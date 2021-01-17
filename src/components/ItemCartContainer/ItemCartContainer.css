@@ -33,7 +33,7 @@
 }
 
 
-.ItemCartFooter button {
+.ItemCartFooter button, .ItemCartFooter a {
     border: 2px solid var(--bg-secundario);
     cursor: pointer;
     padding: 0.5rem 1rem;

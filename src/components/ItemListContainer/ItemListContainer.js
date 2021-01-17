@@ -2,7 +2,8 @@ import {useState, useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import ItemList from '../ItemList/ItemList';
 
-import { productos } from "../../products";
+// import { productos } from "../../products";
+import { getFirestore } from "../../db";
 
 function ItemListContainer() {
 
@@ -10,36 +11,39 @@ function ItemListContainer() {
 
   const [items, setItems] = useState([]);
 
-  
-  /* console.log(productos) */
-  
+  const db = getFirestore();
 
-  const getProducts = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        /* console.log(typeof categoryId === 'undefined') */
-           if (typeof category_name !== 'undefined') {
-                      
-              const itemFiltadros = productos.filter((item) => {
-                /* console.log(item.category) */
-                /* console.log(category_name) */
-                return item.category == category_name
-          });
-            /* console.log(itemFiltadros) */
-            resolve(itemFiltadros);
-          }else{
-            resolve(productos);
-          }
 
-          
-      }, 1000)
-  })
+  const getProductsFromDB = () => {
+      db.collection('productos').get()
+      .then(docs => {
+        let arr = [];
+        
+        
+          docs.forEach(doc => {
+            console.log(doc.data().category)
+            if (typeof category_name !== 'undefined') {
+              
+              if (doc.data().category == category_name){
+                arr.push({id: doc.id, data: doc.data()})
+              }       
+
+            }else{
+              if (doc.data().outstanding == true){
+                arr.push({id: doc.id, data: doc.data()})
+              }
+            }
+            
+          })
+
+        setItems(arr)
+      })
+      .catch(e => console.log(e));
+
+  }
 
   useEffect(() => {
-      getProducts.then(rta => {
-
-        setItems(rta)
-        
-      });
+      getProductsFromDB();
   // eslint-disable-next-line react-hooks/exhaustive-deps
       
   }, [category_name]);
