@@ -1,8 +1,9 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import ItemDetail from '../ItemDetail/ItemDetail';
 
-// import { productos } from "../../products";
+import ItemDetail from '../ItemDetail/ItemDetail';
+import Loader from '../general/Loader/Loader';
+
 import { getFirestore } from "../../db";
 
 function ItemDetailContainer() {
@@ -10,6 +11,7 @@ function ItemDetailContainer() {
     const { id } = useParams();
 
     const [item, setItem] = useState({});
+    const [error, setError] = useState(false)
 
     const db = getFirestore();
 
@@ -20,8 +22,14 @@ function ItemDetailContainer() {
         .then(doc => {
             if (doc.exists) {
                 setItem(doc.data())
+                console.log('Todo OK')
+            }else{
+                console.log('El proudcto NO existe')
+                setError(true)
             }
+            
         })
+        .catch(e => console.log(e))
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -35,7 +43,10 @@ function ItemDetailContainer() {
                 <h2 className="titulo-seccion">Detalle del Producto N° - {item.id}</h2>
                 <ItemDetail item={item}/>
             </> :
-                <p className="cargando">Cargando items...</p>
+                !error ?
+                <Loader />
+                :
+                <div className="alert alert--warning">😵 Lo sentimos <strong>NO</strong> encontramos el producto que estas buscando...!</div>
         }
 
 

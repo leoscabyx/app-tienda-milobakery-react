@@ -8,15 +8,19 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemCartContainer from './components/ItemCartContainer/ItemCartContainer';
 import ItemCheckout from './components/ItemCheckout/ItemCheckout';
+import About from './components/About/About';
+import Contact from './components/Contact/Contact';
+import Error404 from './components/Error404/Error404';
 
 import { CardContext } from './context/CartContext';
 
 import './App.css';
 
+
 function App() {
   const [data, setData] = useState({
     items: [],
-    cantidad: 0
+    quantity: 0
   })
 
   return (
@@ -50,14 +54,23 @@ function App() {
 
           </Route>
 
-          <Route path="*">
-            <h3 className="error404">Recurso NO disponible...</h3> {/* Luego creare el componente Error404 y lo estilizo mejor xD */}
+          <Route exact path="/about">
+            <About />
+
           </Route>
-          {/* Futuras Secciones: Preguntas Frecuentas, Contacto, About Us, Banner o Card Informativo (Envio, Metodos Pago, Etc) */}
+
+          <Route exact path="/contact">
+            <Contact />
+
+          </Route>
+
+          <Route path="*">
+            <Error404 /> 
+          </Route>
+          {/* Futuras Secciones: Preguntas Frecuentas, Banner o Card Informativo (Envio, Metodos Pago, Etc) */}
       </Switch>
       </Main>
 
-      {/* No he definido informacion aun en el Footer: Redes Sociales, titulo, direccion */}
       <Footer />
     </BrowserRouter>
     </CardContext.Provider>

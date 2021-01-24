@@ -12,18 +12,18 @@ import './NavBar.css';
 
 function NavBar() {
 
-  const menuItems = [
+  const navItems = [
     {
-      texto: 'Roll Cake',
-      ruta: '/category/roll-cake'
+      text: 'Roll Cake',
+      url: '/category/roll-cake'
     },
     {
-      texto: 'Cinnamon Rolls',
-      ruta: '/category/cinnamon-rolls'
+      text: 'Cinnamon Rolls',
+      url: '/category/cinnamon-rolls'
     },
     {
-      texto: 'Pan de Jamon',
-      ruta: '/category/pan-de-jamon'
+      text: 'Pan de Jamon',
+      url: '/category/pan-de-jamon'
     }
   ];
 
@@ -36,17 +36,17 @@ function NavBar() {
   return (
         <>
         <nav className="navbar">
-            <Link to="/"><img className="navbar__logo" src={logo} alt=""/></Link>
+            <Link to="/"><img className="navbar__logo" src={logo} alt="Logotipo Milobakery"/></Link>
             <ul className="navbar__menu">
 
               {
-                menuItems.map((category, index) => <NavItem key={index} texto={category.texto} url={category.ruta} />)
+                navItems.map((category, index) => <NavItem key={index} text={category.text} url={category.url} />)
 
               }
 
-                <li className="navbar__item"><a className="navbar__enlace" href="#">Sobre Nosotros</a></li>
-                <li className="navbar__item"><a className="navbar__enlace" href="#">Contacto</a></li>
-                {/* <li className="navbar__item"><Link  className="navbar__enlace" to="/cart"></Link></li> */}
+                <li className="navbar__item"><Link className="navbar__enlace" to="/about">Sobre Nosotros</Link></li>
+                <li className="navbar__item"><Link className="navbar__enlace" to="/contact">Contacto</Link></li>
+                
             </ul>
 
             <CardIcon action={openWidgetCart} />

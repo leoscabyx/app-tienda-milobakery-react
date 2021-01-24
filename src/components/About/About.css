@@ -1,0 +1,25 @@
+.About .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.About p, .About h3 {
+    margin-bottom: 1rem;
+}
+
+@media screen and (min-width:568px) {
+    .About .info {
+        flex-direction: row;
+        align-items: center;
+    }
+    .About .info div {
+        flex-basis: 50%;
+    }
+}
+
+.About .info img {
+    max-width: 80%;
+    margin: 0 auto;
+    display: block;
+    
+}

@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
-import { Redirect } from "react-router-dom";
+
+import Loader from '../general/Loader/Loader';
 
 import { CardContext } from '../../context/CartContext';
 
@@ -10,15 +11,17 @@ import './ItemCheckout.css';
 
 const ItemCheckout = () => {
     const [data, setData] = useContext(CardContext);
-    const [estatus, setEstatus] = useState(false);
+    const [status, setStatus] = useState(false);
+    const [mailError, setMailError] = useState(false);
     const [formData, setFormData] = useState({
         nombre: '',
         apellido: '',
         email: '',
+        emailConfirm: '',
         tel: '',
         numCard: ''
     });
-    const [idCompra, setIdCompra] = useState('')
+    const [orderID, setOrderID] = useState('')
     const db = getFirestore();
 
     
@@ -33,33 +36,40 @@ const ItemCheckout = () => {
         
         if (data.items.length === 0) return 0
         const array = data.items.map(item => item.qty * item.price )
-        let resultado = array.reduce((acu, currentvalue) => acu + currentvalue)
-        return resultado;
+        let result = array.reduce((acu, currentvalue) => acu + currentvalue)
+        return result;
     }
 
-    const compra = {
+    const infoDetail = {
         user: formData,
         items: data.items,
         date: firebase.firestore.Timestamp.fromDate(new Date()),
-        precioTotal: price()
+        priceTotal: price()
     }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
         console.log(data.items)
-        if(data.items.length > 0) {
-            db.collection('ventas').add(compra)
+        if (formData.email !== formData.emailConfirm) {
+            setMailError(true)
+            return
+        }else{
+            setMailError(false)
+        }
+        if (data.items.length > 0 && !Object.values(formData).includes('')) {
+
+            db.collection('ventas').add(infoDetail)
             .then(({id}) => {
-            setEstatus(true)
-            setIdCompra(id)
+            setStatus(true)
+            setOrderID(id)
             setData({
                 items: [],
-                cantidad: 0
+                quantity: 0
             })
             })
             .catch(e => console.log(e));
         }else{
-            console.log('Sin productos en el carrito')
+            console.log('No se pudo procesar la compra, intente de nuevo')
         }
     }
 
@@ -71,19 +81,26 @@ const ItemCheckout = () => {
                 <h2 className="titulo-seccion">Checkout</h2>
 
                 {
-                    !estatus ?
+                    !status ?
                 
-                <form onSubmit={handleSubmitForm}>
-                    <input className="checkout__input" type="text" value={formData.nombre} onChange={handleChangeInput} name="nombre" placeholder="Nombre" />
-                    <input className="checkout__input" type="text" value={formData.apellido} onChange={handleChangeInput} name="apellido" placeholder="Apellido" />
-                    <input className="checkout__input" type="email" value={formData.email} onChange={handleChangeInput} name="email" placeholder="E-mail" />
-                    <input className="checkout__input" type="tel" value={formData.tel} onChange={handleChangeInput} name="tel" placeholder="Teléfono" />
-                    <input className="checkout__input" type="number" value={formData.numCard} onChange={handleChangeInput} name="numCard" placeholder="Numero de Tarjeta" />
+                <>
+                { (mailError) ? <div className="alert alert--warning">❌ NO coincide el email de confirmacion</div> : '' }
+                <form onSubmit={handleSubmitForm} autoComplete="off">
+                    <input className="checkout__input" type="text" value={formData.nombre} onChange={handleChangeInput} name="nombre" placeholder="Nombre" required />
+                    <input className="checkout__input" type="text" value={formData.apellido} onChange={handleChangeInput} name="apellido" placeholder="Apellido" required />
+                    <input className="checkout__input" type="email" value={formData.email} onChange={handleChangeInput} name="email" placeholder="E-mail" required />
+                    <input className="checkout__input checkout__input--email" type="email" value={formData.emailConfirm} onChange={handleChangeInput} name="emailConfirm" placeholder="Confirmar E-mail" required />
+                    <input className="checkout__input" type="tel" value={formData.tel} onChange={handleChangeInput} name="tel" placeholder="Teléfono" required />
+                    <input className="checkout__input" type="number" value={formData.numCard} onChange={handleChangeInput} name="numCard" placeholder="Numero de Tarjeta" required />
                     
                     <button>Pagar</button>
                 </form>
+                </>
                 :
-                <p>La compra se realizo correctamente, tu numero de seguimiento es {idCompra}</p>
+                 !orderID ? 
+                    <Loader />
+                 :
+                    <div className="alert">La compra se realizo correctamente 🙌, tu numero de seguimiento es <span>{orderID}</span></div>
                 }
 
 

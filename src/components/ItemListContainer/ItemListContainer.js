@@ -1,8 +1,8 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import ItemList from '../ItemList/ItemList';
 
-// import { productos } from "../../products";
+import ItemList from '../ItemList/ItemList';
+import Loader from '../general/Loader/Loader';
 import { getFirestore } from "../../db";
 
 function ItemListContainer() {
@@ -21,7 +21,7 @@ function ItemListContainer() {
         
         
           docs.forEach(doc => {
-            console.log(doc.data().category)
+
             if (typeof category_name !== 'undefined') {
               
               if (doc.data().category == category_name){
@@ -44,7 +44,7 @@ function ItemListContainer() {
 
   useEffect(() => {
       getProductsFromDB();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+     // eslint-disable-next-line react-hooks/exhaustive-deps
       
   }, [category_name]);
 
@@ -58,7 +58,7 @@ function ItemListContainer() {
             <ItemList items={items}/>
             
           </> :
-            <p className="cargando">Cargando items...</p>
+            <Loader />
           }
         </div>
 

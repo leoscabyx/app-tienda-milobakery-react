@@ -9,51 +9,49 @@ import imgCart from '../../assets/imgCart.svg';
 function ItemCartContainer() {
     
     const [data, setData] = useContext(CardContext);
-    const [montoTotal, setMontoTotal] = useState(0)
+    const [amountTotal, setAmountTotal] = useState(0)
 
     const clearCart = () => {
-        /* console.log(data) */
+
         setData({
-            cantidad: 0,
+            quantity: 0,
             items: []
         })
         console.log(`Se ha eliminado todos los productos del carrito`)
     }
 
     const removeItem = (itemDelete) => {
-        /* console.log(itemDelete) */
+
         const itemEliminar = data.items.find(producto => producto.id === itemDelete);
         const datosFiltadros = data.items.filter((producto) => producto.id !== itemDelete)
-        console.log(itemEliminar.qty)
-        
 
         setData({
             ...data,
-            cantidad: data.cantidad - itemEliminar.qty,
+            quantity: data.quantity - itemEliminar.qty,
             items: [...datosFiltadros]
         })
 
     }
 
     const calcularTotal = () => {
-        console.log(data, montoTotal)
+
         if (data.items.length === 0) return 0
         const array = data.items.map(item => item.qty * item.price )
 
        
-        let resultado = array.reduce((acu, currentvalue) => acu + currentvalue)
-        setMontoTotal(resultado)
+        let result = array.reduce((acu, currentvalue) => acu + currentvalue)
+        setAmountTotal(result)
     }
 
     useEffect(() => {
         calcularTotal()
         
-    }, [data, montoTotal])
+    }, [data, amountTotal])
     
     return (
         <div className="ItemCartContainer">
             <h2>Carrito de compras</h2>
-            { !!data.cantidad && <h3>Cantidad de items {data.cantidad}</h3>}
+            { !!data.quantity && <h3>Cantidad de items {data.quantity}</h3>}
             {
                 data.items.length > 0 ?
                 data.items.map(item => 
@@ -80,9 +78,9 @@ function ItemCartContainer() {
                 </div>
             }
 
-            { !!data.cantidad && (
+            { !!data.quantity && (
                 <>
-                <h3>Monto Total:  {montoTotal}</h3>
+                <h3>Monto Total:  {amountTotal}</h3>
                 <div className="ItemCartFooter">
                     <button className="" onClick={() => clearCart()}>Vaciar Carrito</button>
                     <Link to="/checkout">Procesar Compra</Link>

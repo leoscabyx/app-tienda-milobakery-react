@@ -1,5 +1,5 @@
 import Title from '../Title/Title';
-import rolesCanela from '../../../assets/roles-canela.png';
+import rollCanela from '../../../assets/roles-canela.png';
 import './InfoContainer.css';
 
 function InfoContainer() {
@@ -11,7 +11,7 @@ function InfoContainer() {
         </div>
 
         <div>
-            <img className="info-container__img" src={rolesCanela} alt="Roles de Canela"/>
+            <img className="info-container__img" src={rollCanela} alt="Roll Canela"/>
         </div>
     </div>
   );

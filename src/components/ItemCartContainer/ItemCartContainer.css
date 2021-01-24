@@ -67,6 +67,14 @@
     padding: 0.5rem 1rem;
     color: #555;
     margin: 0 auto;
-    width: 300px;
+    width: 80%;
+    font-size: 0.8rem;
     text-align: center;
+}
+
+@media screen and (min-width:568px) {
+    .CartEmpty a {
+        max-width: 300px;
+        font-size: 1rem;
+    }
 }

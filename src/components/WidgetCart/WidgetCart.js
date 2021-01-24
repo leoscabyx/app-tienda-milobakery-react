@@ -11,9 +11,9 @@ const WidgetCart = ({show, action}) => {
 
 
     const clearCart = () => {
-        /* console.log(data) */
+
         setData({
-            cantidad: 0,
+            quantity: 0,
             items: []
         })
         console.log(`Se ha eliminado todos los productos del carrito`)
@@ -28,7 +28,7 @@ const WidgetCart = ({show, action}) => {
         console.log(datosFiltadros, itemEliminar)
         setData({
             ...data,
-            cantidad: data.cantidad - itemEliminar.qty,
+            quantity: data.quantity - itemEliminar.qty,
             items: [...datosFiltadros]
         })
     }
@@ -64,9 +64,9 @@ const WidgetCart = ({show, action}) => {
             </div>
 
             <div className="widgetCart__footer">
-            { !!data.cantidad && ( <Link  className="widgetCartItem__cart" to="/cart">Detalle de Compra</Link>)}             
+            { !!data.quantity && ( <Link  className="widgetCartItem__cart" to="/cart">Detalle de Compra</Link>)}             
                 <div>
-                { !!data.cantidad && (<button className="widgetCartItem__clean" onClick={() => clearCart()}>Vaciar Carrito</button>)}
+                { !!data.quantity && (<button className="widgetCartItem__clean" onClick={() => clearCart()}>Vaciar Carrito</button>)}
                     <button className="widgetCartItem__close" onClick={action}>Cerrar widget</button>
                 </div>
             </div>

@@ -24,6 +24,12 @@
     border: 2px solid var(--bg-primario);
     padding: 1rem;
     color: #000;
+    transition: all 0.7s;
+}
+
+.footer .footer__social:hover {
+    background-color: var(--bg-primario);
+    color: var(--color-white);
 }
 
 .footer .footer__subtitulo{
@@ -65,6 +71,7 @@
     border: none;
     color: var(--color-white);
     outline: none;
+    cursor: pointer;
 }
 
 .footer .container-fluid {
@@ -78,3 +85,4 @@
     padding: 1rem 2rem;
     color: #fdf1f1;
 }
+

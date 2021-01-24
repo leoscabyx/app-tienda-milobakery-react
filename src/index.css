@@ -85,3 +85,20 @@ input[type="number"] {
   color: red;
   font-size: 3rem;
 }
+
+.alert {
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  color: #000;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.alert.alert--warning {
+  border: 2px solid orange;
+}
+
+.alert.alert--danger {
+  border: 2px solid red;
+}
