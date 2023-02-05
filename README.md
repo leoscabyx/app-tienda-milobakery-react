@@ -14,7 +14,7 @@ Ver mas sobre el repositorio en github de [Create React App](https://github.com/
 
 Una vez clonado el repositorio y dentro de la carpeta del proyecto ejecutar npm install para descargar las dependencias.
 
-```git clone https://github.com/leoscabyx/tienda-coder.git ```
+```git clone https://github.com/leoscabyx/app-tienda-milobakery-react ```
 
 ### Correr la aplicacion ejecutar `npm start`
 
